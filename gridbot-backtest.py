@@ -21,9 +21,9 @@ for csv in list_of_files:
         'money_split': 0,
         'money_split_percent': 0.5,
         'share_split': 0,
-        'share_split_percent': 1,        
+        'share_split_percent': 1,
         },]
-     
+
     for i in range(len(user_config)):
         user_config[i]['money_split'] = money * user_config[i]['money_split_percent']
         user_config[i]['share_split'] = shares * user_config[i]['share_split_percent']
@@ -40,7 +40,7 @@ for csv in list_of_files:
                     user_config[i]['money_split'] = user_config[i]['sell_price'] * user_config[i]['share_split']
                     user_config[i]['money_split'] = (user_config[i]['money_split'] - (user_config[i]['money_split'] * fee))
                     print(f"sold {user_config[i]['share_split']} shares at {user_config[i]['sell_price']} for ${user_config[i]['money_split']} dollars")
-                    user_config[i]['share_split'] = 0  
+                    user_config[i]['share_split'] = 0
 
 print("\nSUCCESS...")
 print("Total Revenue:",(round(sum(item['money_split'] for item in user_config),2)))

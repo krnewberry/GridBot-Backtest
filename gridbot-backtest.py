@@ -37,10 +37,17 @@ for csv in list_of_files:
     for i in range(split_range):
         money_split[i] = money * money_split_percent[i]
         share_split[i] = shares * share_split_percent[i]
-
-    print("GRID-BOT BACKTEST")
-    print(f"Money Split: {money_split}\n")
     
+    """
+    print(f"Total Money: {money}")
+    print(f"Number of Splits: {split_range}")
+    print(f"Money Split: {money_split}")
+    print(f"Buying at: {buy_price}")
+    print(f"Selling at: {sell_price}")
+    print(f"Maker/Taker Fee:", fee * 100)
+    print()
+    """
+
     for index, row in df.iterrows():
 
         if share_split[0] == 0:

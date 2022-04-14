@@ -28,14 +28,12 @@ for csv in list_of_files:
         },]
      
     # Money & Share Split Calculation
-    split_range = len(user_config) 
-    for i in range(split_range):
+    for i in range(len(user_config)):
         user_config[i]['money_split'] = money * user_config[i]['money_split_percent']
         user_config[i]['share_split'] = shares * user_config[i]['share_split_percent']
     
     for index, row in df.iterrows():
-
-        for i in range(split_range):
+        for i in range(len(user_config)):
             if user_config[i]['share_split'] == 0:
                 if row["low"] >= user_config[i]['buy_price']:
                     user_config[i]['share_split'] = (user_config[i]['money_split'] - (user_config[i]['money_split'] * fee)) / user_config[i]['buy_price'] 
@@ -49,10 +47,10 @@ for csv in list_of_files:
                     user_config[i]['share_split'] = 0  
 
 
-#print("\nSUCCESS...")
-#print(f"Total Money: {money}")
-#print(f"Number of Splits: {split_range}")
-#print(f"Money Split: {user_config['money_split']}")
+print("\nSUCCESS...")
+print(f"Total Money: {money}")
+print(f"Number of Splits: {len(user_config)}")
+print(f"Money Split: {user_config[0]['money_split']}")
 #print(f"Buying at: {user_config['buy_price']}")
 #print(f"Selling at: {user_config['sell_price']}")
 #print(f"Maker/Taker Fee:", fee * 100)
